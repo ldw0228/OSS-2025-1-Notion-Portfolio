@@ -10,11 +10,13 @@
 - [사용 기술](#Technologies)
 - [Treemap 개념](#treemap)
 - [Treemapping 알고리즘](#treemapping)
+- [Treamap 시각화 예시](#example)
+- [프로젝트 일정](#schedule)
 - [팀 역할](#team)
 
 ---
 
-<h2 id="about-the-project"> 🌟 프로젝트 개요 </h2>
+<h2 id="about-the-project"> 🌟 프로젝트 개요 (Abstract) </h2>
 
 본 프로젝트는 **Notion 데이터베이스**에서 사용자의 주식 포트폴리오 데이터를 불러와 **히트맵 형태**로 시각화하는 **웹 애플리케이션**을 구현하는 프로젝트입니다. 사용자는 주식의 **보유량**과 **평균 매수 단가**를 기반으로 투자 비중을 시각적으로 파악할 수 있으며, **실시간 수익률**을 **야후 파이낸스 API**를 통해 제공받을 수 있습니다.
 
@@ -23,7 +25,7 @@
 
 ---
 
-<h2 id="features"> ✨ 기능 </h2>
+<h2 id="features"> ✨ 기능 (Features) </h2>
 
 - 🚀 **데이터 연동**: 사용자의 Notion API 와 연동하여 데이터베이스에서 특정 필드를 읽어옵니다.
 - 🎨 **시각화(Treemap)**: Shares x AvgBuyPrice 로 각 종목의 사각형 면적을 결정합니다. Squarified treemap 알고리즘을 사용합니다.
@@ -47,7 +49,7 @@
 
 ---
 
-<h2 id="treemap"> 📬 Treemap 개념 (Technologies Used)</h2>
+<h2 id="treemap"> 📬 Treemap 개념 (Treemap Concept)</h2>
 
 **Treemap**은 계층적 데이터를 **면적이 다른 중첩 직사각형**으로 배치하는 시각화 기법입니다. 각 직사각형의 **면적**은 해당 항목의 값에 비례하며, **색상**은 추가적인 정보(본 프로젝트에서는 수익률)를 나타냅니다. 주식 포트폴리오에서는 **면적**을 **투자금액**으로 설정하고, **색상**을 **실시간 수익률**로 반영하여 **투자 비중**과 **수익률**을 직관적으로 비교할 수 있습니다.
 
@@ -64,7 +66,7 @@
 
 ---
 
-<h3 >📊 포트폴리오 Treemap 시각화 예시</h3>
+<h2 id="example" >📊 포트폴리오 Treemap 시각화 예시</h3>
 
 <p >
   <img src="assets/treemap-example.png" alt="Portfolio Treemap Example" width="200px" />
@@ -86,7 +88,7 @@
 </br>
 
 ---
-## 프로젝트 일정 (Project Schedule)
+<h2 id="schedule"> 📅프로젝트 일정 (Project Schedule) </h2>
 | 날짜 | 작업 내용 |
 |------|----------|
 | 10월 15일 ~ 10월 22일 | 프로젝트 초기 설정 및 요구사항 분석, GitHub 저장소 생성, 팀 역할 분담 |
@@ -98,7 +100,7 @@
 </br>
 
 ---
-<h2 id="team"> ⛄️ 팀 역할 (Team Roles) (Technologies Used)</h2>
+<h2 id="team"> ⛄️ 팀 역할 (Team Roles)</h2>
 
 | 팀원 | 깃허브 | 역할 |
 |------|------|-----------|
