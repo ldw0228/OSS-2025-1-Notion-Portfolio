@@ -107,7 +107,7 @@
 | 팀원 | 깃허브 | 역할 |
 |------|------|-----------|
 | 조성찬 | [<img src="https://github.com/holychann.png" alt="holychann" width="120" height="120" />](https://github.com/holychann) | CI/CD 배포, Docker 배포, 호스팅, 데브옵스 |
-| 강준우 | <img src="https://github.com/Juunary.png" alt="Juunary GitHub profile" width="120" height="120" /> | Notion API 연동, 실시간 수익률 업데이트 기능 개발 |
-| 이덕원 | <img src="https://github.com/ldw0228.png" alt="ldw0228 GitHub profile" width="120" height="120" /> | D3.js를 이용한 데이터 시각화 및 UI 구현 |
+| 강준우 | [<img src="https://github.com/Juunary.png" alt="Juunary GitHub profile" width="120" height="120" />](https://github.com/Juunary) | Notion API 연동, 실시간 수익률 업데이트 기능 개발 |
+| 이덕원 | [<img src="https://github.com/ldw0228.png" alt="ldw0228 GitHub profile" width="120" height="120" />](https://github.com/ldw0228) | D3.js를 이용한 데이터 시각화 및 UI 구현 |
 
 > Made with ❤️ by the 2025-1 Team
