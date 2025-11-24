@@ -49,6 +49,22 @@ const CustomizedContent = (props: any) => {
     </g>
   );
 };
+
+const CustomTooltip = ({ active, payload }: any) => {
+  if (active && payload && payload.length) {
+    const data = payload[0].payload;
+    return (
+      <div className="bg-white p-2 border border-gray-300 rounded shadow-md text-black">
+        <p className="font-bold">{data.name} ({data.ticker})</p>
+        <p>판매 시: ${data.currentValue.toLocaleString()}</p>
+        <p>수익률: {data.returnRate.toFixed(2)}%</p>
+        <p>평가금액: ${data.currentPrice}</p>
+      </div>
+    );
+  }
+  return null;
+};
+
 export const PortfolioTreemap: React.FC<{ stockData: PortfolioItem[] }> = ({ stockData }) => {
   return (
     <div style={{ width: '100%', height: 500 }}>
