@@ -61,3 +61,90 @@ export async function fetchNotionPortfolio(): Promise<NotionPortfolioData[]> {
     }, 800);
   });
 }
+
+// @ts-ignore
+/**
+ * Yahoo Finance API로 실시간 주가를 가져옵니다
+ */
+// @ts-ignore
+export async function fetchYahooFinanceData(
+  portfolioData: NotionPortfolioData[]
+): Promise<StockData[]> {
+  // 실제 Yahoo Finance API 호출 코드 (주석 처리)
+  /*
+  try {
+    const tickers = portfolioData.map(stock => stock.ticker).join(',');
+    const response = await fetch(
+      `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${tickers}`,
+      {
+        headers: {
+          'User-Agent': 'Mozilla/5.0',
+        },
+      }
+    );
+
+    const data = await response.json();
+    const quotes = data.quoteResponse.result;
+
+    return portfolioData.map(stock => {
+      const quote = quotes.find((q: any) => q.symbol === stock.ticker);
+      const currentPrice = quote?.regularMarketPrice || stock.averagePrice;
+      
+      const investmentAmount = stock.shares * stock.averagePrice;
+      const currentValue = stock.shares * currentPrice;
+      const returnAmount = currentValue - investmentAmount;
+      const returnRate = (returnAmount / investmentAmount) * 100;
+
+      return {
+        id: stock.ticker,
+        ticker: stock.ticker,
+        name: stock.name,
+        shares: stock.shares,
+        averagePrice: stock.averagePrice,
+        currentPrice,
+        investmentAmount,
+        currentValue,
+        returnAmount,
+        returnRate,
+        sector: stock.sector,
+      };
+    });
+  } catch (error) {
+    console.error('Yahoo Finance API 에러:', error);
+    throw error;
+  }
+  */
+
+  // Mock 데이터 (실시간 가격 시뮬레이션)
+  // @ts-ignore
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const enrichedData: StockData[] = portfolioData.map((stock) => {
+        // 실시간 가격 시뮬레이션 (-10% ~ +15% 랜덤 변동)
+        const priceChange = (Math.random() * 0.25 - 0.1) * stock.averagePrice;
+        const currentPrice = stock.averagePrice + priceChange;
+
+        const investmentAmount = stock.shares * stock.averagePrice;
+        const currentValue = stock.shares * currentPrice;
+        const returnAmount = currentValue - investmentAmount;
+        const returnRate = (returnAmount / investmentAmount) * 100;
+
+        return {
+          id: stock.ticker,
+          ticker: stock.ticker,
+          name: stock.name,
+          shares: stock.shares,
+          averagePrice: stock.averagePrice,
+          currentPrice,
+          investmentAmount,
+          currentValue,
+          returnAmount,
+          returnRate,
+          sector: stock.sector,
+        };
+      });
+
+      resolve(enrichedData);
+    }, 600);
+  });
+}
