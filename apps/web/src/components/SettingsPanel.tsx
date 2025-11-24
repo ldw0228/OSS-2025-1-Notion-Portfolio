@@ -1,6 +1,6 @@
-import { X, ExternalLink, Database } from 'lucide-react';
+import { X, ExternalLink, Database, TrendingUp } from 'lucide-react';
 import { Button } from './ui/button';
-import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Alert, AlertDescription } from './ui/alert';
 
 interface SettingsPanelProps {
@@ -118,6 +118,19 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
                         </Button>
                     </div>
 
+                    {/* 보안 권고사항 */}
+                    <div className="pt-6 border-t">
+                        <Alert>
+                            <AlertDescription>
+                                <p className="text-slate-900 mb-2">⚠️ 보안 권고사항</p>
+                                <ul className="text-slate-600 space-y-1 list-disc list-inside">
+                                    <li>API 키는 절대 클라이언트 코드에 노출하지 마세요</li>
+                                    <li>프로덕션 환경에서는 서버 사이드에서 API를 호출하세요</li>
+                                    <li>Supabase Edge Functions 또는 Next.js API Routes 사용 권장</li>
+                                </ul>
+                            </AlertDescription>
+                        </Alert>
+                    </div>
                 </CardContent>
             </Card>
         </div>
