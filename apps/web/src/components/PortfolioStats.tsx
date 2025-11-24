@@ -65,7 +65,27 @@ export function PortfolioStats({ stockData }: PortfolioStatsProps) {
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {/* 통계 카드가 들어갈 자리 */}
+            {stats.map((stat, index) => {
+                const Icon = stat.icon;
+                return (
+                    <Card key={index}>
+                        <CardContent className="p-6">
+                            <div className="flex items-start justify-between">
+                                <div className="flex-1">
+                                    <p className="text-slate-600 mb-2">{stat.label}</p>
+                                    <p className={`text-slate-900 ${stat.color}`}>{stat.value}</p>
+                                    {stat.subValue && (
+                                        <p className="text-slate-500 mt-1">{stat.subValue}</p>
+                                    )}
+                                </div>
+                                <div className={`p-3 rounded-lg ${stat.bgColor}`}>
+                                    <Icon className={`size-6 ${stat.color}`} />
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
+                );
+            })}
         </div>
     );
 }
