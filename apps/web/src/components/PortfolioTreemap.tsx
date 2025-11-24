@@ -1,8 +1,6 @@
 import React from 'react';
-import { ResponsiveContainer, Treemap } from 'recharts';
+import { ResponsiveContainer, Treemap, Tooltip } from 'recharts';
 import { PortfolioItem } from '../hooks/usePortfolio';
-
-
 
 const CustomizedContent = (props: any) => {
   const { root, depth, x, y, width, height, index, colors, name, returnRate, currentValue } = props;
