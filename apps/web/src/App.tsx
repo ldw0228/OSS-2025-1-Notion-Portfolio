@@ -1,40 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { PortfolioTreemap } from './components/PortfolioTreemap';
 import { PortfolioStats } from './components/PortfolioStats';
 import { SettingsPanel } from './components/SettingsPanel';
 import { Button } from './components/ui/button';
 import { RefreshCw, Settings } from 'lucide-react';
-import { fetchNotionPortfolio, fetchYahooFinanceData } from './lib/api';
+import { usePortfolio } from './hooks/usePortfolio';
 import type { StockData } from './types';
 
 export default function App() {
-  const [stockData, setStockData] = useState<StockData[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [lastUpdate, setLastUpdate] = useState<Date>(new Date());
+  const { data, loading, refetch } = usePortfolio();
   const [showSettings, setShowSettings] = useState(false);
+  const lastUpdate = new Date(); // In a real app, this might come from the API or be state
 
-  // @ts-ignore
-  const loadData = async () => {
-    setLoading(true);
-    try {
-      // Notion 데이터베이스에서 포트폴리오 데이터 가져오기
-      const portfolioData = await fetchNotionPortfolio();
-      
-      // Yahoo Finance API로 실시간 가격 가져오기
-      const enrichedData = await fetchYahooFinanceData(portfolioData);
-      
-      setStockData(enrichedData);
-      setLastUpdate(new Date());
-    } catch (error) {
-      console.error('데이터 로딩 실패:', error);
-    } finally {
-      setLoading(false);
-    }
+  const handleRefresh = () => {
+    refetch();
   };
-
-  useEffect(() => {
-    loadData();
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
@@ -57,7 +37,7 @@ export default function App() {
                 <Settings className="size-4" />
               </Button>
               <Button
-                onClick={loadData}
+                onClick={handleRefresh}
                 disabled={loading}
               >
                 <RefreshCw className={`size-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
@@ -67,7 +47,7 @@ export default function App() {
           </div>
 
           {/* Stats */}
-          <PortfolioStats stockData={stockData} />
+          <PortfolioStats stockData={data as unknown as StockData[]} />
         </div>
 
         {/* Settings Panel */}
@@ -85,7 +65,7 @@ export default function App() {
               </div>
             </div>
           ) : (
-            <PortfolioTreemap stockData={stockData} />
+            <PortfolioTreemap stockData={data} />
           )}
         </div>
 
